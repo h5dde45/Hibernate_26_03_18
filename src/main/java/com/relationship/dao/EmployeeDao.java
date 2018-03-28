@@ -1,5 +1,6 @@
 package com.relationship.dao;
 
+import com.relationship.models.Address;
 import com.relationship.models.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,6 +19,11 @@ public class EmployeeDao {
     public List getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
         return session.createCriteria(Employee.class).list();
+    }
+
+    public List getAllAddress() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Address.class).list();
     }
 
 }

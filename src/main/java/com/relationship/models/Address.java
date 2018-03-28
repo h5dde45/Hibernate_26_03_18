@@ -9,7 +9,7 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int adId;
+    private int id;
 
     @Column(name = "street")
     private String street;
@@ -17,16 +17,15 @@ public class Address {
     @Column(name = "city")
     private String city;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "address")
     private Employee employee;
 
-    public int getAdId() {
-        return adId;
+    public int getId() {
+        return id;
     }
 
-    public void setAdId(int adId) {
-        this.adId = adId;
+    public void setId(int adId) {
+        this.id = id;
     }
 
     public String getStreet() {

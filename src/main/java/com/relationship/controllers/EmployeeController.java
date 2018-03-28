@@ -16,6 +16,7 @@ public class EmployeeController {
     public String listContacts(Model model){
         model.addAttribute("contact", new Employee());
         model.addAttribute("listEmployees", employeeService.getAllEmployees());
+        model.addAttribute("listAddress", employeeService.getAllAddress());
         return "employees";
     }
 }

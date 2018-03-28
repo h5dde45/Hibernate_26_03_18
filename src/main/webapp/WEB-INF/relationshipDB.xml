@@ -18,6 +18,8 @@
             <list>
                 <value>com.relationship.models.Employee</value>
                 <value>com.relationship.models.Address</value>
+                <value>com.onetoone.models.User</value>
+                <value>com.onetoone.models.Passport</value>
             </list>
         </property>
         <property name="hibernateProperties">

@@ -18,4 +18,9 @@ public class EmployeeService {
         return employeeDao.getAllEmployees();
     }
 
+    @Transactional
+    public List getAllAddress() {
+        return employeeDao.getAllAddress();
+    }
+
 }

@@ -16,6 +16,10 @@ public class Employee {
     @Column(name = "lastName")
     private String lastName;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     public int getId() {
         return id;
     }
@@ -38,5 +42,13 @@ public class Employee {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

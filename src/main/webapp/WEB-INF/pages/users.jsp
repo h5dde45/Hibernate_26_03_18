@@ -46,24 +46,20 @@
 
 <h2>Employees List</h2>
 
-<c:if test="${!empty listEmployees}">
+<c:if test="${!empty listUsers}">
     <table class="tg">
         <tr>
             <th width="80">Id</th>
-            <th width="150">First name</th>
-            <th width="150">Last name</th>
-            <th width="150">Id address</th>
-            <th width="150">Street</th>
-            <th width="150">City</th>
+            <th width="150">Name</th>
+            <th width="150">Id passport</th>
+            <th width="150">number</th>
         </tr>
-        <c:forEach items="${listEmployees}" var="employee">
+        <c:forEach items="${listUsers}" var="user">
             <tr>
-                <td>${employee.id}</td>
-                <td>${employee.firstName}</td>
-                <td>${employee.lastName}</td>
-                <td>${employee.address.id}</td>
-                <td>${employee.address.street}</td>
-                <td>${employee.address.city}</td>
+                <td>${user.id}</td>
+                <td>${user.name}</td>
+                <td>${user.passport.id}</td>
+                <td>${user.passport.number}</td>
             </tr>
         </c:forEach>
         <tr>
@@ -71,17 +67,13 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
         </tr>
-        <c:forEach items="${listAddress}" var="address">
+        <c:forEach items="${listPassports}" var="passport">
             <tr>
-                <td>${address.employee.id}</td>
-                <td>${address.employee.firstName}</td>
-                <td>${address.employee.lastName}</td>
-                <td>${address.id}</td>
-                <td>${address.street}</td>
-                <td>${address.city}</td>
+                <td>${passport.user.id}</td>
+                <td>${passport.user.name}</td>
+                <td>${passport.id}</td>
+                <td>${passport.number}</td>
             </tr>
         </c:forEach>
     </table>

@@ -38,4 +38,18 @@ public class ContactController {
         return "contacts";
     }
 
+    @RequestMapping(value = "contacts/orderDescLastName")
+    public String orderDescLastName(Model model) {
+        model.addAttribute("contact", new Contact());
+        model.addAttribute("listContacts", contactService.orderDescLastName());
+        return "contacts";
+    }
+
+    @RequestMapping(value = "contacts/gtVersion")
+    public String gtVersion(Model model) {
+        model.addAttribute("contact", new Contact());
+        model.addAttribute("listContacts", contactService.gtVersion());
+        return "contacts";
+    }
+
 }

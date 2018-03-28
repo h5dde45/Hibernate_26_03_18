@@ -3,15 +3,26 @@ package com.hbrnt.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "contact_tel_detail", schema = "testschema", catalog = "")
+@Table(name = "contact_tel_detail")
 public class ContactTelDetail {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private int id;
+
+    @Column(name = "tel_type", nullable = false, length = 20)
     private String telType;
+
+    @Column(name = "tel_number", nullable = false, length = 20)
     private String telNumber;
+
+    @Column(name = "version", nullable = false)
     private int version;
 
-    @Id
-    @Column(name = "id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "contact_id")
+    private Contact contact;
+
     public int getId() {
         return id;
     }
@@ -20,8 +31,6 @@ public class ContactTelDetail {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "tel_type", nullable = false, length = 20)
     public String getTelType() {
         return telType;
     }
@@ -30,8 +39,6 @@ public class ContactTelDetail {
         this.telType = telType;
     }
 
-    @Basic
-    @Column(name = "tel_number", nullable = false, length = 20)
     public String getTelNumber() {
         return telNumber;
     }
@@ -40,14 +47,20 @@ public class ContactTelDetail {
         this.telNumber = telNumber;
     }
 
-    @Basic
-    @Column(name = "version", nullable = false)
     public int getVersion() {
         return version;
     }
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     @Override
@@ -57,18 +70,14 @@ public class ContactTelDetail {
 
         ContactTelDetail that = (ContactTelDetail) o;
 
-        if (id != that.id) return false;
         if (version != that.version) return false;
         if (telType != null ? !telType.equals(that.telType) : that.telType != null) return false;
-        if (telNumber != null ? !telNumber.equals(that.telNumber) : that.telNumber != null) return false;
-
-        return true;
+        return telNumber != null ? telNumber.equals(that.telNumber) : that.telNumber == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (telType != null ? telType.hashCode() : 0);
+        int result = telType != null ? telType.hashCode() : 0;
         result = 31 * result + (telNumber != null ? telNumber.hashCode() : 0);
         result = 31 * result + version;
         return result;

@@ -40,10 +40,6 @@
             color: #333;
             background-color: #f0f0f0;
         }
-
-        /*.tg .tg-4eph {*/
-            /*background-color: #f9f9f9*/
-        /*}*/
     </style>
 </head>
 <body>
@@ -55,11 +51,18 @@
         <tr>
             <th width="80">Id</th>
             <th width="150">
-                <a href="/contacts/orderAscFirstName" style="text-decoration: none">First name</a>
+                <a href="/contacts/orderAscFirstName"
+                   style="text-decoration: none">First name</a>
             </th>
-            <th width="150">Last name</th>
+            <th width="150">
+                <a href="/contacts/orderDescLastName"
+                   style="text-decoration: none">Last name</a>
+            </th>
             <th width="150">Birth date</th>
-            <th width="150">Version</th>
+
+            <th width="150">
+                <a href="/contacts/gtVersion"
+                   style="text-decoration: none">Version</a>
         </tr>
         <c:forEach items="${listContacts}" var="contact">
             <tr>
@@ -69,6 +72,24 @@
                 <td>${contact.birthDate}</td>
                 <td>${contact.version}</td>
             </tr>
+            <tr>
+                <th width="80">Id</th>
+                <th width="150">Contact id</th>
+                <th width="150">Tel type</th>
+                <th width="150">Tel number</th>
+                <th width="150">Version</th>
+            </tr>
+            <c:if test="${!empty contact.contactTelDetails}">
+                <c:forEach items="${contact.contactTelDetails}" var="telDetails">
+                    <tr>
+                        <td>${telDetails.id}</td>
+                        <td>${telDetails.contact.id}</td>
+                        <td>${telDetails.telType}</td>
+                        <td>${telDetails.telNumber}</td>
+                        <td>${telDetails.version}</td>
+                    </tr>
+                </c:forEach>
+            </c:if>
         </c:forEach>
     </table>
 </c:if>
@@ -116,7 +137,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input path="birthDate" />
+                <form:input path="birthDate"/>
             </td>
         </tr>
         <tr>
@@ -126,7 +147,7 @@
                 </form:label>
             </td>
             <td>
-                <form:input  path="version" />
+                <form:input path="version"/>
             </td>
         </tr>
         <tr>

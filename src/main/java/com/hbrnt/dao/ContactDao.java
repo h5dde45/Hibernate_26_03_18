@@ -4,6 +4,7 @@ import com.hbrnt.models.Contact;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,5 +29,17 @@ public class ContactDao {
         Session session = sessionFactory.getCurrentSession();
         return session.createCriteria(Contact.class).
                 addOrder(Order.asc("firstName")).list();
+    }
+
+    public List orderDescLastName(){
+        Session session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Contact.class).
+                addOrder(Order.desc("lastName")).list();
+    }
+
+    public List gtVersion(){
+        Session session = sessionFactory.getCurrentSession();
+        return session.createCriteria(Contact.class).
+                add(Restrictions.gt("version",5)).list();
     }
 }

@@ -27,4 +27,14 @@ public class ContactService {
     public List orderAscFirstName(){
         return  contactDao.orderAscFirstName();
     }
+
+    @Transactional
+    public List orderDescLastName(){
+        return  contactDao.orderDescLastName();
+    }
+
+    @Transactional
+    public List gtVersion(){
+        return  contactDao.gtVersion();
+    }
 }

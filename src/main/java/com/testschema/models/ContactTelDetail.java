@@ -1,4 +1,4 @@
-package com.hbrnt.models;
+package com.testschema.models;
 
 import javax.persistence.*;
 

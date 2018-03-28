@@ -1,7 +1,7 @@
-package com.hbrnt.controllers;
+package com.testschema.controllers;
 
-import com.hbrnt.models.Contact;
-import com.hbrnt.service.ContactService;
+import com.testschema.models.Contact;
+import com.testschema.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

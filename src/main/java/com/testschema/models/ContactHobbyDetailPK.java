@@ -1,16 +1,15 @@
-package com.hbrnt.models;
+package com.testschema.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "contact_hobby_detail", schema = "testschema", catalog = "")
-@IdClass(ContactHobbyDetailPK.class)
-public class ContactHobbyDetail {
+public class ContactHobbyDetailPK implements Serializable {
     private int contactId;
     private String hobbyId;
 
-    @Id
     @Column(name = "contact_id", nullable = false)
+    @Id
     public int getContactId() {
         return contactId;
     }
@@ -19,8 +18,9 @@ public class ContactHobbyDetail {
         this.contactId = contactId;
     }
 
+    @Column(name = "hobby_id", nullable = false, length = 20,
+    insertable = false,updatable = false)
     @Id
-    @Column(name = "hobby_id", nullable = false, length = 20)
     public String getHobbyId() {
         return hobbyId;
     }
@@ -34,7 +34,7 @@ public class ContactHobbyDetail {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ContactHobbyDetail that = (ContactHobbyDetail) o;
+        ContactHobbyDetailPK that = (ContactHobbyDetailPK) o;
 
         if (contactId != that.contactId) return false;
         if (hobbyId != null ? !hobbyId.equals(that.hobbyId) : that.hobbyId != null) return false;
